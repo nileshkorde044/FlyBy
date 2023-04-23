@@ -14,6 +14,14 @@ const resolvers = {
     location: ({locationId}) => {
       return {id: locationId};
     }
+  },
+  Location: {
+    overallRating: ({id}, _, {dataSources}) => {
+      return dataSources.reviewsAPI.getOverallRatingForLocation(id);
+    },
+    reviewsForLocation: ({id}, _, {dataSources}) => {
+      return dataSources.reviewsAPI.getReviewsForLocation(id);
+     },
   }
 };
 
